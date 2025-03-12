@@ -13,6 +13,7 @@ from colorama import init as initColor, Fore
 initColor()
 
 GAME_NAME = "World of Warcraft"
+# Set this to 30 if playing WoW Classic
 CAST_DUREATION_SEC = 20
 FONT = pyfiglet.Figlet()
 
@@ -35,7 +36,7 @@ def show_start_text():
     colored_text = Fore.CYAN + ascii_text + Fore.RESET
     print(colored_text)
     print(
-        Fore.RED + "Please do not move your window. Make sure you have enabled the auto-loot feature in the game settings." + Fore.RESET)
+        Fore.RED + "Please do not move your window." + Fore.RESET)
     print(
         Fore.RED + "Additionally, for best results, zoom into the first person view and hide the UI by pressing ALT+W (or ALT+Z on QWERTY)." + Fore.RESET)
     print("You can stop the bot by pressing CTRL+C.")
@@ -88,7 +89,9 @@ def catch_fish(x_center, y_center):
 
     time_to_wait = random.random()
     time.sleep(time_to_wait) # Old value was 0.1
-    pyautogui.click(button='right')
+    pyautogui.keyDown("shift")
+    pyautogui.rightClick()
+    pyautogui.keyUp("shift")
     total += 1
 
 
